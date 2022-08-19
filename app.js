@@ -14,7 +14,7 @@ list = require('request').Request; // see  template
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.listen(3000);
+app.listen();
 
 
 let url;
