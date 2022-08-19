@@ -13,8 +13,8 @@ var validator = require("node-email-validation");
 list = require('request').Request; // see  template
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
-
-app.listen();
+let port = process.env.PORT || 80
+app.listen(port);
 
 
 let url;
