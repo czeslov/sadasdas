@@ -11,7 +11,7 @@ var validator = require("node-email-validation");
 
 
 list = require('request').Request; // see  template
-app.use(express.static('public'));
+app.use(express.static('./'));
 app.use(bodyParser.urlencoded({extended: true}));
 let port = process.env.PORT || 80
 app.listen(port);
