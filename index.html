@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            input {
+                display: inline-block;
+            }
+            div #button {
+                display: inline-block;
+                background-color: blue;
+                border-radius: 5px;
+                width: 100px;
+                height: 20px;
+                text-align: center;
+            }
+        </style>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+            integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"/>
+    </head>
+    <body>
+        <div class="nav">
+            <input type="text">
+            <div id="button">Get this List</div>
+        </div>
+        <div id="response"></div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            let papapap="sdada";
+            let wyniki = [],words =[];
+            const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+        document.querySelector("input").value = "";
+        let dive = document.getElementById("response");
+        function extractEmails ( text ){
+            return text.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
+        }
+     $(document).ready(function() {
+         $('#button').click(function() {
+            $.post("/request", {"a" : document.querySelector('input').value});
+            document.querySelector("input").value = "";
+             // run an AJAX get request to the route you setup above...
+             // respect the cross-domain policy by using the same domain
+             // you used to access your index.html file!
+             setTimeout(odbieracz,30000)
+             function odbieracz(){
+                
+                $.get('http://localhost:3000/request', function(list) {
+                    console.log(list);
+                    
+                 let uniqueChars = [...new Set(list)];
+                 
+                 console.log(uniqueChars);
+                 
+                 uniqueChars.forEach(element => {
+                    if(element.length!=0){
+                    console.log(element.length);
+                    const div = document.createElement('div');
+                    const legit = document.createElement('i');
+                    div.textContent = element;
+                    legit.classList.add('fa-solid');
+                    legit.classList.add('fa-check');
+                    dive.appendChild(div);
+                    div.appendChild(legit);
+                        
+                    }
+                 })
+             });
+             }
+         });
+     });
+     </script>
+     </body>
+ </html>
