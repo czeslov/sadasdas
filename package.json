@@ -1,4 +1,5 @@
 {
+  
   "dependencies": {
     "axios": "^0.27.2",
     "body-parse": "^0.1.0",
@@ -22,5 +23,8 @@
     "request": "^2.88.2",
     "scrape-linkedin": "^0.0.2",
     "static": "^2.0.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
